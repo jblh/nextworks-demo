@@ -1,5 +1,7 @@
 import { type ThemeConfig, type ThemeVariant } from "@nextworks/blocks-core";
 
+export type { ThemeVariant, ThemeConfig };
+
 export const themes: Record<ThemeVariant, ThemeConfig> = {
   default: {
     name: "Default",
