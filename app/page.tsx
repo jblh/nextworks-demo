@@ -25,11 +25,20 @@ export default function Home() {
             <ThemeToggle />
             <Button asChild variant="outline" size="sm">
               <a
-                href="https://github.com/jblh/nextworks-cli"
+                href="https://github.com/jblh/nextworks-demo"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 GitHub
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="sm">
+              <a
+                href="https://github.com/jblh/nextworks-cli"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                CLI (alpha)
               </a>
             </Button>
             <Button asChild size="sm">
@@ -134,7 +143,7 @@ export default function Home() {
             </a>
             <a
               className="hover:text-foreground"
-              href="https://github.com/jblh/nextworks-cli"
+              href="https://github.com/jblh/nextworks-demo"
               target="_blank"
               rel="noopener noreferrer"
             >
