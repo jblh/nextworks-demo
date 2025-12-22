@@ -1,6 +1,6 @@
 # Nextworks Blocks Demo
 
-Public demo app for **Nextworks Blocks** (section gallery + page templates). This repo exists so you can quickly browse what the Blocks kit looks like when installed into a clean Next.js App Router project.
+Demo app for **Nextworks Blocks** (section gallery + page templates). This repo exists so you can quickly browse what the Blocks kit looks like when installed into a clean Next.js App Router project.
 
 - **Live demo:** https://nextworks-demo.vercel.app/
 - **Main repo (CLI + kits):** https://github.com/jblh/nextworks-cli
