@@ -25,9 +25,6 @@ export interface NavbarProps {
   /** Optional id to attach to the root nav element */
   id?: string;
 
-  /** Optional demo-only link (e.g. "← Demo home") shown left of the brand. */
-  demoHomeLink?: { label: string; href: string } | null;
-
   /** The height of the navbar as a Tailwind class. Example: "h-16" or "h-[13vh]" */
   navHeight?: string;
 
@@ -131,7 +128,6 @@ const defaultMenuItems = [
  */
 export function Navbar({
   id,
-  demoHomeLink = null,
   navHeight = "h-16",
   brand = "Brand Name",
   brandNode,
@@ -232,17 +228,6 @@ export function Navbar({
             brandWrapper.className,
           )}
         >
-          {demoHomeLink && (
-            <Link
-              href={demoHomeLink.href}
-              className={cn(
-                "mr-1 rounded-md px-2 py-1 text-xs font-medium text-muted-foreground hover:text-foreground",
-                "focus:ring-ring focus:ring-2 focus:ring-offset-2 focus:outline-none",
-              )}
-            >
-              {demoHomeLink.label}
-            </Link>
-          )}
           {brandNode}
           {brand && <h1 className={cn(brandText.className)}>{brand}</h1>}
         </div>

@@ -25,7 +25,6 @@ type SharedNavbarProps = ComponentProps<typeof SharedNavbar>;
 type PresetOverrides = Partial<SharedNavbarProps>;
 
 const defaultProps: SharedNavbarProps = {
-  demoHomeLink: { label: "← Demo home", href: "/" },
   brand: "DashFlow",
   // Preserve custom gradient logo block
   brandNode: (
