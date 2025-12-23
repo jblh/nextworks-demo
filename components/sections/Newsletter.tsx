@@ -31,10 +31,10 @@ export interface NewsletterProps {
   form?: { className?: string };
   formRow?: { className?: string };
   input?: { className?: string };
-    button?: {
+  button?: {
     className?: string;
-    variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
-    size?: "default" | "sm" | "lg" | "icon";
+    variant?: React.ComponentProps<typeof Button>["variant"];
+    size?: React.ComponentProps<typeof Button>["size"];
     unstyled?: boolean;
   };
 

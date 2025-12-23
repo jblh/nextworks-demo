@@ -27,7 +27,6 @@ type SharedNavbarProps = ComponentProps<typeof SharedNavbar>;
 type PresetOverrides = Partial<SharedNavbarProps>;
 
 const defaultProps: SharedNavbarProps = {
-  demoHomeLink: { label: "← Demo home", href: "/" },
   brand: "IntelliOpAI",
   menuItems: [
     { label: "Home", href: "#home" },

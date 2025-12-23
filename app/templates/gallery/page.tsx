@@ -71,7 +71,6 @@ export default function Gallery() {
       <div className="component-gallery">
         {/* Navigation */}
         <Navbar
-          demoHomeLink={{ label: "← Demo home", href: "/" }}
           container={{ className: "max-w-7xl mx-auto" }}
           mobileMenu={{
             className: "border-t border-border md:block lg:hidden",

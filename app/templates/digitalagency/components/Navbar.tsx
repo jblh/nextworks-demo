@@ -22,7 +22,6 @@ type SharedNavbarProps = ComponentProps<typeof SharedNavbar>;
 type PresetOverrides = Partial<SharedNavbarProps>;
 
 const defaultProps: SharedNavbarProps = {
-  demoHomeLink: { label: "← Demo home", href: "/" },
   brand: "Nexus Digital",
   brandNode: (
     <BrandNodeGradientRing gradient="conic-gradient(#7c3aed, #ec4899, #7c3aed)" />
