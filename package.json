@@ -9,10 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "nextworks": "^0.1.0-alpha.16",
-    "@nextworks/blocks-core": "0.1.0-alpha.16",
-    "@nextworks/blocks-sections": "0.1.0-alpha.16",
-    "@nextworks/blocks-templates": "0.1.0-alpha.16",
+    "nextworks": "^0.1.0-alpha.17",
+    "@nextworks/blocks-core": "0.1.0-alpha.17",
+    "@nextworks/blocks-sections": "0.1.0-alpha.17",
+    "@nextworks/blocks-templates": "0.1.0-alpha.17",
     "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-label": "^2.1.7",
