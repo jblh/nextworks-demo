@@ -12,6 +12,7 @@
         "@radix-ui/react-dropdown-menu",
         "tailwind-merge",
         "tw-animate-css",
+        "@tailwindcss/postcss",
         "next-themes",
         "motion",
         "sonner",
@@ -50,6 +51,7 @@
         "lib/themes.ts",
         "lib/utils.ts",
         "app/globals.css",
+        "app/tw-animate.css",
         "next.config.ts",
         ".nextworks/docs/THEME_GUIDE.md",
         ".nextworks/docs/BLOCKS_README.md",
@@ -98,6 +100,7 @@
         "lib/themes.ts",
         "lib/utils.ts",
         "app/globals.css",
+        "app/tw-animate.css",
         "next.config.ts",
         "app/templates/productlaunch/page.tsx",
         "app/templates/productlaunch/PresetThemeVars.tsx",
@@ -164,7 +167,7 @@
         "public/placeholders/saas_dashboard/projectBoard.png",
         ".nextworks/docs/THEME_GUIDE.md"
       ],
-      "installedAt": "2026-01-01T01:50:00.142Z"
+      "installedAt": "2026-01-07T14:13:05.248Z"
     }
   ],
   "version": "0.1.0"
