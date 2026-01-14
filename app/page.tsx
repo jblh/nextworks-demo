@@ -95,36 +95,7 @@ export default function Home() {
           />
         </section>
 
-        <section className="mt-12">
-          <Card className="p-6">
-            <h2 className="text-lg font-semibold">Want the full stack?</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Nextworks also includes optional kits for Auth (NextAuth + Prisma),
-              Forms (React Hook Form + Zod), and Data (CRUD admin UIs). See the
-              main repo for docs and quickstarts.
-            </p>
-            <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-              <Button asChild>
-                <a
-                  href="https://github.com/jblh/nextworks-cli#quickstart"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Read quickstart
-                </a>
-              </Button>
-              <Button asChild variant="outline">
-                <a
-                  href="https://github.com/jblh/nextworks-cli/discussions"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Give feedback
-                </a>
-              </Button>
-            </div>
-          </Card>
-        </section>
+
       </main>
 
       <footer className="border-t border-border">
