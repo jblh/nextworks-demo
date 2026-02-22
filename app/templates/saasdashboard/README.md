@@ -1,11 +1,17 @@
 # SaaSDashboard Template Theming
 
-This template is preset-first. It’s wrapped with `PresetThemeVars` to apply a sky/blue palette across shared components. Use local overrides sparingly (e.g., a CTA hover state unique to a section).
+This template is preset-first. It’s wrapped with `PresetThemeVars` to apply a sky/blue palette across shared components.
 
 ## Where it’s wired
 
-- Wrapper: `components/templates/saasdashboard/PresetThemeVars.tsx`
-- Page: `app/templates/saasdashboard/page.tsx`
+Template paths depend on your router:
+
+- App Router:
+  - Wrapper: `app/templates/saasdashboard/PresetThemeVars.tsx`
+  - Page: `app/templates/saasdashboard/page.tsx`
+- Pages Router:
+  - Wrapper: `components/templates/saasdashboard/PresetThemeVars.tsx`
+  - Page: `pages/templates/saasdashboard/index.tsx`
 
 ## Core variables
 

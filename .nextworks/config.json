@@ -46,7 +46,10 @@
         "components/ui/theme-toggle.tsx",
         "components/ui/toaster.tsx",
         "components/enhanced-theme-provider.tsx",
+        "components/providers/BlocksAppProviders.tsx",
         "components/app-providers.tsx",
+        "components/app-providers.app.tsx",
+        "components/app-providers.pages.tsx",
         "components/theme-provider.tsx",
         "lib/themes.ts",
         "lib/utils.ts",
@@ -95,7 +98,10 @@
         "components/ui/theme-toggle.tsx",
         "components/ui/toaster.tsx",
         "components/enhanced-theme-provider.tsx",
+        "components/providers/BlocksAppProviders.tsx",
         "components/app-providers.tsx",
+        "components/app-providers.app.tsx",
+        "components/app-providers.pages.tsx",
         "components/theme-provider.tsx",
         "lib/themes.ts",
         "lib/utils.ts",
@@ -167,7 +173,7 @@
         "public/placeholders/saas_dashboard/projectBoard.png",
         ".nextworks/docs/THEME_GUIDE.md"
       ],
-      "installedAt": "2026-01-07T14:13:05.248Z"
+      "installedAt": "2026-02-22T18:25:11.616Z"
     }
   ],
   "version": "0.1.0"

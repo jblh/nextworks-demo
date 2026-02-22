@@ -14,13 +14,19 @@ This project now includes a comprehensive theming system that allows you to easi
 
 ### 1. Basic Setup
 
-Your app is configured with the enhanced theme provider via `AppProviders` in `app/layout.tsx`.
+Your app is configured with the enhanced theme provider via `AppProviders` in your router entrypoint:
+
+- App Router: `app/layout.tsx`
+- Pages Router: `pages/_app.tsx`
 
 **Turbopack / Next 16 note (fonts + AppProviders)**
 
-As of the current alpha, `@nextworks/blocks-core/server` intentionally **does not** import `next/font/*`.
-Fonts are instead configured directly in your app’s `app/layout.tsx` (the CLI patches this for you).
-This avoids Turbopack dev issues related to internal Next font modules.
+As of the current alpha, shared packages intentionally avoid importing `next/font/*`.
+Fonts are instead configured directly in your app’s router entrypoint (the CLI patches this for you):
+
+- App Router: `app/layout.tsx`
+- Pages Router: `pages/_app.tsx`
+  This avoids Turbopack dev issues related to internal Next font modules.
 
 If you ever see a font-related Turbopack error after upgrades or manual edits, re-run:
 
@@ -28,7 +34,7 @@ If you ever see a font-related Turbopack error after upgrades or manual edits, r
 npx nextworks@latest add blocks --sections --templates
 ```
 
-to re-apply the layout patch, and ensure `app/layout.tsx` contains a valid
+to re-apply the router entrypoint patch, and ensure your entrypoint contains a valid
 `import { ... } from "next/font/google";` plus the corresponding `const geistSans = ...` etc.
 
 The default theme variant is set to "monochrome".
@@ -126,7 +132,14 @@ export const themes: Record<ThemeVariant, ThemeConfig> = {
 
 ### 7. Example Usage
 
-See the templates under `app/templates/*` and `lib/themes.ts` for concrete examples of how themes are wired up.
+See the templates and `lib/themes.ts` for concrete examples of how themes are wired up.
+
+Template paths depend on your router:
+
+- App Router: `app/templates/<template>/**`
+- Pages Router:
+  - route entry file: `pages/templates/<template>/index.tsx`
+  - supporting template files: `components/templates/<template>/**`
 
 ## Benefits
 
@@ -154,7 +167,11 @@ Sometimes you want the speed and consistency of the Color Theme (tokens), but st
 Example: override only mobile link hover background in the shared Navbar from a preset, leaving everything else token-based.
 
 ```tsx
+// App Router install:
 // app/templates/productlaunch/components/Navbar.tsx
+//
+// Pages Router install:
+// components/templates/productlaunch/components/Navbar.tsx
 mobileLinks: {
   className: "hover:bg-purple-50 dark:hover:bg-purple-900/20",
 },
@@ -165,7 +182,11 @@ mobileLinks: {
 Links in Navbar apply a token focus ring (`focus:ring-ring`). You can override it per preset by placing your ring utilities in `links.className` (these are merged last):
 
 ```tsx
+// App Router install:
 // app/templates/productlaunch/components/Navbar.tsx
+//
+// Pages Router install:
+// components/templates/productlaunch/components/Navbar.tsx
 links: {
   className:
     "text-sm font-medium font-inter text-gray-800 dark:text-white hover:text-purple-700 dark:hover:text-purple-500 " +
@@ -178,7 +199,11 @@ links: {
 `ThemeToggle` accepts `buttonProps` that forward to the internal `Button`. For small tweaks, keep token variants and just add classes. For full control, use `unstyled: true` to bypass tokens:
 
 ```tsx
+// App Router install:
 // app/templates/productlaunch/components/Navbar.tsx
+//
+// Pages Router install:
+// components/templates/productlaunch/components/Navbar.tsx
 themeToggle: {
   buttonProps: {
     unstyled: true,
@@ -221,7 +246,11 @@ Suggested variables:
 Example in a preset:
 
 ```tsx
+// App Router install:
 // app/templates/productlaunch/components/Navbar.tsx
+//
+// Pages Router install:
+// components/templates/productlaunch/components/Navbar.tsx
 nav: {
   className:
     "bg-white dark:bg-gray-900 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-800 " +
