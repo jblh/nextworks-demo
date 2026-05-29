@@ -14,30 +14,35 @@ import { PresetThemeVars } from "./PresetThemeVars";
 
 export default function AIWorkflowTemplatePage() {
   return (
-    <PresetThemeVars>
-      <div>
-        <Navbar />
-        <section id="home">
-          <Hero />
-        </section>
-        <TrustBadges />
-        <section id="features">
-          <Features />
-          <ProcessTimeline />
-        </section>
-        <Testimonials />
-        <section id="pricing">
-          <Pricing />
-        </section>
-        <section id="faq">
-          <FAQ />
-        </section>
-        <CTA />
-        <section id="contact">
-          <Contact />
-        </section>
-        <Footer />
-      </div>
-    </PresetThemeVars>
+    <div className="dark" id="home">
+      <PresetThemeVars>
+        <div className="min-h-screen bg-background text-foreground">
+          <Navbar />
+          <div className="pointer-events-none fixed right-3 bottom-3 z-40 rounded-full border border-white/8 bg-black/30 px-3 py-1.5 text-[11px] text-white/45 backdrop-blur-md sm:right-4 sm:bottom-4 sm:text-xs">
+            Demo shown in dark mode · template supports light/dark
+          </div>
+          <section id="home">
+            <Hero />
+          </section>
+          <TrustBadges />
+          <section id="features">
+            <Features />
+            <ProcessTimeline />
+          </section>
+          <Testimonials />
+          <section id="pricing">
+            <Pricing />
+          </section>
+          <section id="faq">
+            <FAQ />
+          </section>
+          <CTA />
+          <section id="contact">
+            <Contact />
+          </section>
+          <Footer />
+        </div>
+      </PresetThemeVars>
+    </div>
   );
 }
