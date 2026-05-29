@@ -1,0 +1,95 @@
+import React from "react";
+
+import { cn } from "@/lib/utils";
+import type { ProductDemoTaskListState } from "./types";
+
+export interface TaskListPanelProps {
+  state: ProductDemoTaskListState;
+  onSelect?: (taskId: string) => void;
+}
+
+export function TaskListPanel({ state, onSelect }: TaskListPanelProps) {
+  return (
+    <div className="flex h-full min-h-0 flex-col bg-[var(--demo-panel-muted-bg)] text-[var(--demo-fg)]">
+      <div className="border-b border-[var(--demo-border)] px-3 py-2.5">
+        <div className="text-[10px] uppercase tracking-[0.18em] text-[var(--demo-subtle-fg)]">
+          Task navigator
+        </div>
+        <div className="mt-1 text-[11px] text-[var(--demo-muted-fg)]">
+          Choose a task to inspect and run.
+        </div>
+      </div>
+
+      <div className="space-y-0 overflow-hidden">
+        {state.items.map((item, index) => {
+          const isActive = item.id === state.activeItemId;
+
+          return (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => onSelect?.(item.id)}
+              className={cn(
+                "relative isolate w-full overflow-hidden rounded-none border-x-0 border-y border-b-0 px-3 py-3 text-left transition-colors duration-200 first:border-t-0",
+                "border-[var(--demo-border)] bg-[var(--demo-panel-bg)] hover:border-[var(--demo-border-strong)] hover:bg-[var(--demo-shell-strong-bg)]",
+                isActive &&
+                  "border-[var(--demo-border-strong)] bg-[var(--demo-shell-strong-bg)]",
+              )}
+            >
+              {isActive ? (
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-y-0 left-0 w-px bg-[var(--demo-accent)]"
+                />
+              ) : null}
+
+              <div className="relative z-10 flex items-start gap-3">
+                <span
+                  className={cn(
+                    "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[10px] font-semibold",
+                    isActive
+                      ? "border-[var(--demo-border-strong)] bg-[var(--demo-shell-strong-bg)] text-[var(--demo-fg)]"
+                      : "border-[var(--demo-border)] bg-[var(--demo-panel-subtle-bg)] text-[var(--demo-muted-fg)]",
+                  )}
+                >
+                  {index + 1}
+                </span>
+
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <div className="text-sm font-semibold text-[var(--demo-fg)]">
+                        {item.title}
+                      </div>
+                    </div>
+                    <div
+                      className={cn(
+                        "flex h-5 w-[4.5rem] shrink-0 items-center justify-end text-[9px] uppercase tracking-[0.14em]",
+                        isActive
+                          ? "text-[var(--demo-muted-fg)]"
+                          : "text-[var(--demo-subtle-fg)]",
+                      )}
+                    >
+                      {isActive ? "Open" : "Queued"}
+                    </div>
+                  </div>
+                  {item.description && (
+                    <p className="mt-1.5 max-w-[22ch] text-xs leading-relaxed text-[var(--demo-muted-fg)]">
+                      {item.description}
+                    </p>
+                  )}
+                  {item.meta && (
+                    <div className="mt-2.5 flex items-center gap-2 text-[11px] text-[var(--demo-muted-fg)]">
+                      <span className="h-1 w-1 rounded-full bg-[var(--demo-border-strong)]" />
+                      <span>{item.meta}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

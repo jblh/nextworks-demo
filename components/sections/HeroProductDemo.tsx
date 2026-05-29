@@ -1,0 +1,246 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { DemoStage } from "./product-demo/DemoStage";
+import type { ProductDemoScenario } from "./product-demo/types";
+
+export interface HeroProductDemoTextContent {
+  text?: string;
+  className?: string;
+}
+
+export interface HeroProductDemoCta {
+  label?: string;
+  href?: string;
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
+  size?: "default" | "sm" | "lg" | "icon";
+  className?: string;
+  unstyled?: boolean;
+  style?: React.CSSProperties;
+}
+
+export interface HeroProductDemoStageConfig {
+  scenarios?: ProductDemoScenario[];
+  initialScenarioIndex?: number;
+  activeScenarioKey?: string;
+  autoCycle?: boolean;
+  cycleIntervalMs?: number;
+  className?: string;
+}
+
+export interface HeroProductDemoSlots {
+  section?: { className?: string };
+  container?: { className?: string };
+  textContainer?: { className?: string };
+  demoContainer?: { className?: string };
+  buttonsContainer?: { className?: string };
+  demoBelowText?: boolean;
+}
+
+export interface HeroProductDemoProps extends HeroProductDemoSlots {
+  id?: string;
+  className?: string;
+  heading?: string | HeroProductDemoTextContent;
+  subheading?: string | HeroProductDemoTextContent;
+  cta1?: HeroProductDemoCta;
+  cta2?: HeroProductDemoCta;
+  stage?: HeroProductDemoStageConfig;
+  demo?: React.ReactNode;
+  ariaLabel?: string;
+  enableMotion?: boolean;
+}
+
+function normalizeTextContent(
+  value: string | HeroProductDemoTextContent | undefined,
+  defaults: Required<HeroProductDemoTextContent>,
+) {
+  if (typeof value === "string") {
+    return { text: value, className: defaults.className };
+  }
+
+  return {
+    text: value?.text ?? defaults.text,
+    className: cn(defaults.className, value?.className),
+  };
+}
+
+export function HeroProductDemo({
+  id,
+  className,
+  heading,
+  subheading,
+  cta1,
+  cta2,
+  stage,
+  demo,
+  section,
+  container,
+  textContainer,
+  demoContainer,
+  buttonsContainer,
+  demoBelowText = false,
+  ariaLabel = "Product demo hero section",
+  enableMotion = true,
+}: HeroProductDemoProps) {
+  const defaultHeading = {
+    text: "Show your product in motion",
+    className:
+      "text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl",
+  };
+
+  const defaultSubheading = {
+    text: "Pair clear positioning with a layered product demo that makes the workflow feel real before anyone clicks.",
+    className:
+      "mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base lg:text-lg",
+  };
+
+  const normalizedHeading = normalizeTextContent(heading, defaultHeading);
+  const normalizedSubheading = normalizeTextContent(
+    subheading,
+    defaultSubheading,
+  );
+
+  const buttonLift = enableMotion
+    ? "transition-all duration-200 hover:-translate-y-0.5"
+    : "transition-none hover:!translate-y-0";
+
+  const defaultCta1 = {
+    label: "Get Started",
+    href: "#contact",
+    variant: "default" as const,
+    size: "lg" as const,
+    className: "shadow-lg hover:shadow-xl",
+  };
+
+  const mergedCta1 = {
+    ...defaultCta1,
+    ...(cta1 ?? {}),
+    className: cn(defaultCta1.className, cta1?.className, buttonLift),
+  };
+
+  const defaultCta2 = {
+    label: "Learn More",
+    href: "#",
+    variant: "outline" as const,
+    size: "lg" as const,
+    className: "",
+  };
+
+  const mergedCta2 = cta2
+    ? {
+        ...defaultCta2,
+        ...cta2,
+        className: cn(defaultCta2.className, cta2.className, buttonLift),
+      }
+    : undefined;
+
+  const renderButtons = (
+    <div
+      className={cn(
+        "mt-4 flex flex-col items-start gap-4 sm:flex-row sm:items-center",
+
+        buttonsContainer?.className,
+      )}
+    >
+      {mergedCta1.label && (
+        <Button
+          asChild
+          variant={mergedCta1.variant}
+          size={mergedCta1.size}
+          className={mergedCta1.className}
+          unstyled={mergedCta1.unstyled}
+          style={mergedCta1.style}
+        >
+          <Link href={mergedCta1.href || "#"} aria-label={mergedCta1.label}>
+            {mergedCta1.label}
+          </Link>
+        </Button>
+      )}
+
+      {mergedCta2?.label && (
+        <Button
+          asChild
+          variant={mergedCta2.variant}
+          size={mergedCta2.size}
+          className={mergedCta2.className}
+          unstyled={mergedCta2.unstyled}
+          style={mergedCta2.style}
+        >
+          <Link href={mergedCta2.href || "#"} aria-label={mergedCta2.label}>
+            {mergedCta2.label}
+          </Link>
+        </Button>
+      )}
+    </div>
+  );
+
+  const renderDemo = (
+    <div className={cn("relative", demoContainer?.className)}>
+      {demo ?? (
+        <DemoStage
+          scenarios={stage?.scenarios}
+          initialScenarioIndex={stage?.initialScenarioIndex}
+          activeScenarioKey={stage?.activeScenarioKey}
+          autoCycle={stage?.autoCycle}
+          cycleIntervalMs={stage?.cycleIntervalMs}
+          className={stage?.className}
+          enableMotion={enableMotion}
+          ariaLabel="Layered product demo"
+        />
+      )}
+    </div>
+  );
+
+  return (
+    <section
+      id={id}
+      className={cn(
+        "relative overflow-hidden px-6 py-12 sm:px-8 lg:px-10 lg:py-18",
+        section?.className,
+        className,
+      )}
+      aria-label={ariaLabel}
+    >
+      <div
+        className={cn(
+          demoBelowText
+            ? "mx-auto flex max-w-7xl flex-col gap-6"
+            : "mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[minmax(0,0.84fr)_minmax(0,1.16fr)] lg:gap-12 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]",
+          container?.className,
+        )}
+      >
+        <div
+          className={cn(
+            "relative z-10 flex flex-col items-start",
+            textContainer?.className,
+          )}
+        >
+          <h1 className={cn(normalizedHeading.className)}>
+            {normalizedHeading.text}
+          </h1>
+
+          {normalizedSubheading.text ? (
+            <p className={cn(normalizedSubheading.className)}>
+              {normalizedSubheading.text}
+            </p>
+          ) : null}
+
+          {!demoBelowText ? renderButtons : null}
+        </div>
+
+        {renderDemo}
+
+        {demoBelowText ? renderButtons : null}
+      </div>
+    </section>
+  );
+}

@@ -25,15 +25,14 @@ Depending on install flags, Blocks adds:
 ## Install commands / options
 
 > ```bash
-> npx nextworks@latest add blocks --sections --templates
+> npx nextworks@latest add blocks --templates
 > ```
 
 Blocks supports these install shapes:
 
 - `npx nextworks@latest add blocks --ui-only` → core UI primitives only
 - `npx nextworks@latest add blocks --sections` → core + sections
-- `npx nextworks@latest add blocks --templates` → core + templates
-- `npx nextworks@latest add blocks --sections --templates` → core + sections + templates (recommended)
+- `npx nextworks@latest add blocks --templates` → core + sections + templates (recommended)
 
 ---
 
@@ -55,7 +54,10 @@ Blocks supports these install shapes:
    - `/templates/productlaunch`
    - `/templates/saasdashboard`
    - `/templates/digitalagency`
+   - `/templates/aiworkflow`
    - `/templates/gallery`
+
+   The current **AI Workflow** template ships with an **AI coding agent** story, but the structure is intended to be reusable for other AI workflow/product stories too.
 
 ---
 

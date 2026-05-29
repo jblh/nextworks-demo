@@ -1,0 +1,130 @@
+import React from "react";
+import { cn } from "@/lib/utils";
+import type {
+  ProductDemoKnowledgePanelState,
+  ProductDemoStatusTone,
+} from "./types";
+
+export interface KnowledgePanelProps {
+  state: ProductDemoKnowledgePanelState;
+}
+
+const STATUS_TONE_CLASSES: Record<ProductDemoStatusTone, string> = {
+  neutral:
+    "border-[var(--demo-border)] bg-[var(--demo-panel-bg)] text-[var(--demo-muted-fg)]",
+  info: "border-[var(--demo-info-border)] bg-[var(--demo-info-soft-bg)] text-[var(--demo-info)]",
+  success:
+    "border-[var(--demo-success-border)] bg-[var(--demo-success-soft-bg)] text-[var(--demo-success)]",
+  warning:
+    "border-[var(--demo-warning-border)] bg-[var(--demo-warning-soft-bg)] text-[var(--demo-warning)]",
+  danger:
+    "border-[var(--demo-danger-border)] bg-[var(--demo-danger-soft-bg)] text-[var(--demo-danger)]",
+};
+
+function getStatusClass(tone: ProductDemoStatusTone = "neutral") {
+  return STATUS_TONE_CLASSES[tone];
+}
+
+export function KnowledgePanel({ state }: KnowledgePanelProps) {
+  return (
+    <div className="flex h-full flex-col gap-4 text-[var(--demo-fg)]">
+      <div className="space-y-1.5">
+        {state.title && (
+          <h4 className="text-sm font-semibold text-[var(--demo-fg)]">
+            {state.title}
+          </h4>
+        )}
+        {state.subtitle && (
+          <p className="text-xs leading-relaxed text-[var(--demo-muted-fg)]">
+            {state.subtitle}
+          </p>
+        )}
+      </div>
+
+      {state.query && (
+        <div className="rounded-xl border border-[var(--demo-info-border)] bg-[var(--demo-info-soft-bg)] px-3 py-2 text-xs text-[var(--demo-info)]">
+          {state.query}
+        </div>
+      )}
+
+      {state.summary && (
+        <p className="text-xs leading-relaxed text-[var(--demo-muted-fg)]">
+          {state.summary}
+        </p>
+      )}
+
+      {state.sources?.length ? (
+        <div className="flex flex-wrap gap-2">
+          {state.sources.map((source) => (
+            <span
+              key={source.id}
+              className={cn(
+                "rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.14em]",
+                getStatusClass(source.status),
+              )}
+            >
+              {source.label}
+              {source.kind ? ` • ${source.kind}` : ""}
+            </span>
+          ))}
+        </div>
+      ) : null}
+
+      <div className="space-y-3">
+        {state.snippets.map((snippet) => {
+          const isActive =
+            snippet.id === state.activeSnippetId || snippet.highlighted;
+          const source = state.sources?.find(
+            (item) => item.id === snippet.sourceId,
+          );
+
+          return (
+            <div
+              key={snippet.id}
+              className={cn(
+                "rounded-2xl border border-[var(--demo-border)] bg-[var(--demo-panel-bg)] p-3",
+                isActive &&
+                  "border-[var(--demo-info-border)] bg-[var(--demo-info-soft-bg)] shadow-sm",
+              )}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <div className="text-sm font-semibold text-[var(--demo-fg)]">
+                    {snippet.title}
+                  </div>
+                  {(snippet.excerptLabel || source?.label) && (
+                    <div className="mt-1 text-[11px] text-[var(--demo-muted-fg)]">
+                      {[snippet.excerptLabel, source?.label]
+                        .filter(Boolean)
+                        .join(" • ")}
+                    </div>
+                  )}
+                </div>
+                {snippet.confidence && (
+                  <span className="rounded-full border border-[var(--demo-border)] bg-[var(--demo-panel-muted-bg)] px-2 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-[var(--demo-muted-fg)]">
+                    {snippet.confidence}
+                  </span>
+                )}
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-[var(--demo-muted-fg)]">
+                {snippet.content}
+              </p>
+              {snippet.tags?.length ? (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {snippet.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-[var(--demo-border)] bg-[var(--demo-panel-bg)] px-2 py-0.5 text-[10px] text-[var(--demo-muted-fg)]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
