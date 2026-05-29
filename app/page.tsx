@@ -21,7 +21,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 [--navbar-toggle-bg:var(--background)] [--navbar-accent:var(--foreground)] [--navbar-hover-bg:var(--accent)] [--navbar-border:var(--border)] [--navbar-ring:var(--ring)]">
             <ThemeToggle />
             <Button asChild variant="outline" size="sm">
               <a
@@ -60,8 +60,12 @@ export default function Home() {
             Browse Nextworks UI blocks and templates
           </h1>
           <p className="max-w-2xl text-pretty text-muted-foreground">
-            This is a public demo app built from the <strong>Blocks</strong> kit.
-            Install the same files into your own Next.js project with:
+            This demo app is a simple way to explore the <strong>Blocks</strong>{" "}
+            kit: core UI components, shared sections, and complete templates
+            built from those same parts. The gallery shows the building blocks,
+            while the templates show how they can come together in fuller pages.
+            If you want to use the same files in your own Next.js project, you
+            can install them with:
           </p>
           <pre className="overflow-x-auto rounded-lg border border-border bg-card p-4 text-sm">
             <code>npx nextworks add blocks --sections --templates</code>
@@ -74,6 +78,12 @@ export default function Home() {
             description="A browseable gallery of sections/components. Best starting point."
             href="/templates/gallery"
             cta="Open gallery"
+          />
+          <DemoCard
+            title="AI Workflow"
+            description="A dark, AI-agent-style landing page for workflow automation offers."
+            href="/templates/aiworkflow"
+            cta="Open template"
           />
           <DemoCard
             title="Product Launch"
@@ -94,15 +104,11 @@ export default function Home() {
             cta="Open template"
           />
         </section>
-
-
       </main>
 
       <footer className="border-t border-border">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-6 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            Built with Nextworks Blocks. MIT licensed.
-          </div>
+          <div>Built with Nextworks Blocks. MIT licensed.</div>
           <div className="flex gap-4">
             <a
               className="hover:text-foreground"
