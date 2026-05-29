@@ -1,0 +1,262 @@
+export type ProductDemoStatusTone =
+  | "neutral"
+  | "info"
+  | "success"
+  | "warning"
+  | "danger";
+
+export type ProductDemoHighlightTone =
+  | ProductDemoStatusTone
+  | "accent"
+  | "muted";
+
+export type ProductDemoWindowKey =
+  | "taskList"
+  | "workflowStudio"
+  | "runConsole"
+  | "approvalInbox"
+  | "knowledgePanel";
+
+export interface ProductDemoWindowStatus {
+  label: string;
+  tone?: ProductDemoStatusTone;
+}
+
+export interface ProductDemoWindowLayoutHint {
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  zIndex?: number;
+  rotateDeg?: number;
+}
+
+export interface ProductDemoWindowMeta {
+  key: ProductDemoWindowKey;
+  title: string;
+  subtitle?: string;
+  status?: ProductDemoWindowStatus;
+  badge?: string;
+  layoutHint?: ProductDemoWindowLayoutHint;
+}
+
+export interface ProductDemoHighlightTarget {
+  id: string;
+  label?: string;
+  tone?: ProductDemoHighlightTone;
+}
+
+export interface ProductDemoWorkflowNode {
+  id: string;
+  label: string;
+  description?: string;
+  type?: string;
+  status?: ProductDemoStatusTone;
+  active?: boolean;
+  emphasized?: boolean;
+  metadata?: string;
+}
+
+export interface ProductDemoWorkflowBranch {
+  id: string;
+  fromNodeId: string;
+  toNodeId: string;
+  label?: string;
+  status?: ProductDemoStatusTone;
+  active?: boolean;
+}
+
+export interface ProductDemoWorkflowRegion {
+  id: string;
+  label: string;
+  description?: string;
+  status?: ProductDemoStatusTone;
+  nodeIds?: string[];
+  active?: boolean;
+  highlighted?: boolean;
+}
+
+export interface ProductDemoTaskItem {
+  id: string;
+  title: string;
+  description?: string;
+  meta?: string;
+}
+
+export interface ProductDemoTaskListState {
+  window: ProductDemoWindowMeta;
+  title?: string;
+  subtitle?: string;
+  items: ProductDemoTaskItem[];
+  activeItemId?: string;
+}
+
+export interface ProductDemoWorkflowTranscriptEntry {
+  id: string;
+  kind?: "title" | "prompt" | "activity" | "thought" | "message" | "file";
+  text: string;
+  path?: string;
+  added?: number;
+  removed?: number;
+  tone?: ProductDemoStatusTone;
+}
+
+export interface ProductDemoWorkflowComposerState {
+  placeholder?: string;
+  modeLabel?: string;
+  modelLabel?: string;
+}
+
+export interface ProductDemoPlaybackTimeline {
+  playbackMs?: number;
+  playbackStepDurationsMs?: number[];
+  playbackResetDelayMs?: number;
+}
+
+export interface ProductDemoWorkflowPlaybackConfig extends ProductDemoPlaybackTimeline {}
+
+export interface ProductDemoRunConsolePlaybackConfig extends ProductDemoPlaybackTimeline {
+  playbackStepEntryIndices?: number[];
+  playbackStepVisibleLineCounts?: number[];
+}
+
+export interface ProductDemoScenarioPlayback {
+  workflowStudio?: ProductDemoWorkflowPlaybackConfig;
+  runConsole?: ProductDemoRunConsolePlaybackConfig;
+}
+
+export interface ProductDemoWorkflowStudioState {
+  window: ProductDemoWindowMeta;
+  title?: string;
+  subtitle?: string;
+  nodes: ProductDemoWorkflowNode[];
+  branches?: ProductDemoWorkflowBranch[];
+  regions?: ProductDemoWorkflowRegion[];
+  activeNodeId?: string;
+  activeRegionId?: string;
+  highlights?: ProductDemoHighlightTarget[];
+  transcript?: Array<string | ProductDemoWorkflowTranscriptEntry>;
+  composer?: ProductDemoWorkflowComposerState;
+  playbackMs?: number;
+  playbackStep?: number;
+  playbackStepDurationsMs?: number[];
+  playbackResetDelayMs?: number;
+}
+
+export interface ProductDemoRunConsoleEntry {
+  id: string;
+  message: string;
+  timestamp?: string;
+  source?: string;
+  status?: ProductDemoStatusTone;
+  detail?: string;
+  lineNumber?: string;
+  code?: string[];
+  highlighted?: boolean;
+}
+
+export interface ProductDemoRunConsoleMetric {
+  id: string;
+  label: string;
+  value: string;
+  tone?: ProductDemoStatusTone;
+}
+
+export interface ProductDemoRunConsoleState {
+  window: ProductDemoWindowMeta;
+  title?: string;
+  subtitle?: string;
+  statusLabel?: string;
+  progressLabel?: string;
+  entries: ProductDemoRunConsoleEntry[];
+  metrics?: ProductDemoRunConsoleMetric[];
+  progressPercent?: number;
+  activeEntryId?: string;
+  editorTabLabel?: string;
+  editorLanguage?: string;
+  editorSummary?: string;
+  highlights?: ProductDemoHighlightTarget[];
+  playbackMs?: number;
+  playbackStep?: number;
+  playbackStepDurationsMs?: number[];
+  playbackResetDelayMs?: number;
+  playbackStepEntryIndices?: number[];
+  playbackStepVisibleLineCounts?: number[];
+}
+
+export interface ProductDemoApprovalAction {
+  id: string;
+  label: string;
+  tone?: ProductDemoStatusTone;
+}
+
+export interface ProductDemoApprovalItem {
+  id: string;
+  title: string;
+  description?: string;
+  requester?: string;
+  status?: ProductDemoStatusTone;
+  priorityLabel?: string;
+  dueLabel?: string;
+  actions?: ProductDemoApprovalAction[];
+  highlighted?: boolean;
+}
+
+export interface ProductDemoApprovalInboxState {
+  window: ProductDemoWindowMeta;
+  title?: string;
+  subtitle?: string;
+  counts?: Array<{
+    id: string;
+    label: string;
+    value: string;
+    tone?: ProductDemoStatusTone;
+  }>;
+  items: ProductDemoApprovalItem[];
+  activeItemId?: string;
+  highlights?: ProductDemoHighlightTarget[];
+}
+
+export interface ProductDemoKnowledgeSource {
+  id: string;
+  label: string;
+  kind?: string;
+  status?: ProductDemoStatusTone;
+}
+
+export interface ProductDemoKnowledgeSnippet {
+  id: string;
+  title: string;
+  content: string;
+  sourceId?: string;
+  confidence?: string;
+  excerptLabel?: string;
+  tags?: string[];
+  highlighted?: boolean;
+}
+
+export interface ProductDemoKnowledgePanelState {
+  window: ProductDemoWindowMeta;
+  title?: string;
+  subtitle?: string;
+  query?: string;
+  summary?: string;
+  sources?: ProductDemoKnowledgeSource[];
+  snippets: ProductDemoKnowledgeSnippet[];
+  activeSnippetId?: string;
+  highlights?: ProductDemoHighlightTarget[];
+}
+
+export interface ProductDemoScenario {
+  key: string;
+  label?: string;
+  description?: string;
+  taskList: ProductDemoTaskListState;
+  workflowStudio: ProductDemoWorkflowStudioState;
+  runConsole: ProductDemoRunConsoleState;
+  approvalInbox: ProductDemoApprovalInboxState;
+  knowledgePanel: ProductDemoKnowledgePanelState;
+  playback?: ProductDemoScenarioPlayback;
+  activeWindow?: ProductDemoWindowKey;
+  highlights?: ProductDemoHighlightTarget[];
+}

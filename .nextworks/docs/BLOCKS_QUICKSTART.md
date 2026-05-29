@@ -18,7 +18,7 @@ This is the fastest path to verify your Blocks install is working and find the r
 From your app root:
 
 ```bash
-npx nextworks@latest add blocks --sections --templates
+npx nextworks@latest add blocks --templates
 npm install
 ```
 
@@ -35,7 +35,10 @@ Then visit:
 - `http://localhost:3000/templates/productlaunch`
 - `http://localhost:3000/templates/saasdashboard`
 - `http://localhost:3000/templates/digitalagency`
+- `http://localhost:3000/templates/aiworkflow`
 - `http://localhost:3000/templates/gallery`
+
+The current **AI Workflow** template ships with an **AI coding agent** story, but you can adapt it for other AI workflow/product stories.
 
 If those load and look styled, you’re in good shape.
 
