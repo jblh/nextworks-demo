@@ -27,9 +27,8 @@ const defaultProps: SharedNavbarProps = {
     { label: "Contact", href: "#contact" },
   ],
   ctaButton: null,
-  showColorModeToggle: false,
+  showColorModeToggle: true,
   navHeight: "h-16",
-
   sticky: true,
   ariaLabel: "FlowPilot AI main navigation",
   className: "",
