@@ -33,21 +33,20 @@ export function ThemeToggle({
     ...(buttonProps as ButtonProps),
     className: cn(
       "relative",
-      // Prefer preset navbar variables, but fall back to theme tokens when they are not provided
-      "bg-[var(--navbar-toggle-bg,var(--background))] text-[var(--navbar-accent,var(--foreground))] hover:bg-[var(--navbar-hover-bg,var(--accent))] focus-visible:ring-[var(--navbar-ring,var(--ring))]",
+      // Prefer preset variables if provided on Navbar
+      "bg-[var(--navbar-toggle-bg)] text-[var(--navbar-accent)] hover:bg-[var(--navbar-hover-bg)] focus-visible:ring-[var(--navbar-ring)]",
       // Ensure border uses preset variable; provide width for unstyled cases
-      "border border-[var(--navbar-border,var(--border))]",
+      "border border-[var(--navbar-border)]",
       buttonProps?.className,
     ),
-
     // Inline style ensures our accent wins over token classes even under dark: variants
     style: {
       ...(buttonProps?.style as React.CSSProperties),
-      color: "var(--navbar-accent, var(--foreground))",
-      backgroundColor: "var(--navbar-toggle-bg, var(--background))",
-      borderColor: "var(--navbar-border, var(--border))",
+      color: "var(--navbar-accent)",
+      backgroundColor: "var(--navbar-toggle-bg)",
+      borderColor: "var(--navbar-border)",
       // Tell Tailwind ring utilities which ring color to use
-      "--tw-ring-color": "var(--navbar-ring, var(--ring))",
+      "--tw-ring-color": "var(--navbar-ring)",
     },
   } as ButtonProps;
 
