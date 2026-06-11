@@ -11,6 +11,7 @@ Demo app for **Nextworks Blocks** (section gallery + page templates). This repo 
 Routes to try:
 - `/` — demo index (links to everything)
 - `/templates/gallery` — component/section gallery
+- `/templates/aiworkflow` — ai workflow ( ai coding agent ) template
 - `/templates/productlaunch` — product launch template
 - `/templates/saasdashboard` — SaaS dashboard marketing template
 - `/templates/digitalagency` — digital agency template
