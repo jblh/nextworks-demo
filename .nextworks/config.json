@@ -62,13 +62,16 @@
         "components/sections/About.tsx",
         "components/sections/Contact.tsx",
         "components/sections/CTA.tsx",
+        "components/sections/CommandShowcase.tsx",
         "components/sections/FAQ.tsx",
         "components/sections/Features.tsx",
         "components/sections/Footer.tsx",
+        "components/sections/FeaturedProjectShowcase.tsx",
         "components/sections/HeroMotion.tsx",
         "components/sections/HeroOverlay.tsx",
         "components/sections/HeroProductDemo.tsx",
         "components/sections/HeroSplit.tsx",
+        "components/sections/HeroWithVideo.tsx",
         "components/sections/Navbar.tsx",
         "components/sections/product-demo/ApprovalInboxPanel.tsx",
         "components/sections/product-demo/DemoStage.tsx",
@@ -82,6 +85,8 @@
         "components/sections/PortfolioSimple.tsx",
         "components/sections/Pricing.tsx",
         "components/sections/ProcessTimeline.tsx",
+        "components/sections/ProjectDeepDive.tsx",
+        "components/sections/SelectedWorkRail.tsx",
         "components/sections/ServicesGrid.tsx",
         "components/sections/Team.tsx",
         "components/sections/Testimonials.tsx",
@@ -169,7 +174,7 @@
         "public/placeholders/saas_dashboard/projectBoard.png",
         ".nextworks/docs/THEME_GUIDE.md"
       ],
-      "installedAt": "2026-06-11T06:56:39.626Z"
+      "installedAt": "2026-06-24T13:47:33.233Z"
     }
   ],
   "version": "0.1.0"
