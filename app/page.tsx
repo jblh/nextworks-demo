@@ -80,12 +80,6 @@ export default function Home() {
             cta="Open gallery"
           />
           <DemoCard
-            title="AI Workflow"
-            description="A dark, AI-agent-style landing page for workflow automation offers."
-            href="/templates/aiworkflow"
-            cta="Open template"
-          />
-          <DemoCard
             title="Product Launch"
             description="A marketing/launch template composed from sections."
             href="/templates/productlaunch"
