@@ -17,11 +17,12 @@ type BlocksAppProvidersProps = {
  */
 export function BlocksAppProviders({
   children,
-  defaultThemeVariant = "monochrome",
+  defaultThemeVariant = "blue",
 }: BlocksAppProvidersProps) {
   return (
-    <EnhancedThemeProvider defaultThemeVariant={"blue"}>
+    <EnhancedThemeProvider defaultThemeVariant={defaultThemeVariant}>
       {children}
     </EnhancedThemeProvider>
   );
 }
+

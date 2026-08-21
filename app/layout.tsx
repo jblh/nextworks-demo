@@ -43,15 +43,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-theme-variant="blue">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased ${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased ${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased ${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased ${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased ${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased ${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased ${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased ${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased ${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable} ${poppins.variable} antialiased`}
       >
-<AppProviders>
+        <AppProviders>
           {children}
           <AppToaster />
         </AppProviders>
-</body>
+      </body>
     </html>
   );
 }
+
+
+

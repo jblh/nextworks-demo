@@ -11,7 +11,9 @@ export default function AppProviders({
 }) {
   return (
     <div className="antialiased">
-      <BlocksAppProviders>{children}</BlocksAppProviders>
+      <BlocksAppProviders defaultThemeVariant="blue">
+        {children}
+      </BlocksAppProviders>
     </div>
   );
 }
