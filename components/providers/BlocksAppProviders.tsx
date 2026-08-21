@@ -20,7 +20,7 @@ export function BlocksAppProviders({
   defaultThemeVariant = "monochrome",
 }: BlocksAppProvidersProps) {
   return (
-    <EnhancedThemeProvider defaultThemeVariant={defaultThemeVariant}>
+    <EnhancedThemeProvider defaultThemeVariant={"blue"}>
       {children}
     </EnhancedThemeProvider>
   );

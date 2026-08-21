@@ -54,7 +54,7 @@ export function EnhancedThemeProvider({
   defaultTheme = "system",
   enableSystem = true,
   disableTransitionOnChange = false,
-  defaultThemeVariant = "monochrome",
+  defaultThemeVariant = "blue",
   defaultCustomTokens = null,
 }: EnhancedThemeProviderProps) {
   const [themeVariant, setThemeVariant] =
