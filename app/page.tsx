@@ -75,7 +75,7 @@ export default function Home() {
         <section className="mt-10 grid gap-4 md:grid-cols-2">
           <DemoCard
             title="Gallery"
-            description="A browseable gallery of sections/components. Best starting point."
+            description="A browseable gallery of sections/components."
             href="/templates/gallery"
             cta="Open gallery"
           />
